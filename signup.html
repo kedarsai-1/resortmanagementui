@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            // Initialize EmailJS with your public key
+            emailjs.init("GOtN2fyFWbYerzpaV");
+        })();
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .email-verify {
+            display: none;
+            margin: 20px 0;
+        }
+
+        #otp-input {
+            letter-spacing: 2px;
+            font-size: 16px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <div class="email">
+            <input id="email" type="email" placeholder="Enter Your Email" autocomplete="off">
+        </div>
+        <div class="email-verify">
+            <input id="otp-input" type="text" placeholder="Enter OTP Code" autocomplete="off" maxlength="6">
+            <button id="btn-verify-otp">Verify OTP</button>
+        </div>
+        <button class="btn-send-otp" onclick="sendOTP()">Send OTP</button>
+        <p>Already have an account? <a href="signin.html">Sign In</a></p>
+    </div>
+
+    <script>
+        function sendOTP() {
+            const email = document.getElementById('email');
+            const otpverify = document.querySelector('.email-verify');
+            
+            if (!email || !email.value) {
+                alert('Please enter an email address');
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email.value)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            const otp_code = String(Math.floor(100000 + Math.random() * 900000));
+            const sendOtpButton = document.querySelector('.btn-send-otp');
+            sendOtpButton.disabled = true;
+            sendOtpButton.textContent = 'Sending...';
+
+            const templateParams = {
+                to_email: email.value,
+                otp_code: otp_code
+            };
+
+            emailjs.send('service_15hl5en', 'template_w0u0dsf', templateParams)
+                .then(function() {
+                    sendOtpButton.disabled = false;
+                    sendOtpButton.textContent = 'Send OTP';
+                    alert("OTP sent to your email " + email.value);
+                    otpverify.style.display = "flex";
+                    
+                    const otp_inp = document.getElementById("otp-input");
+                    const otp_btn = document.getElementById("btn-verify-otp");
+                    
+                    const newOtpBtn = otp_btn.cloneNode(true);
+                    otp_btn.parentNode.replaceChild(newOtpBtn, otp_btn);
+                    
+                    newOtpBtn.addEventListener("click", () => {
+                        if (otp_inp.value === otp_code) {
+                            alert("Email verified successfully!");
+                            window.location.href = "bookingpage.html";
+                        } else {
+                            alert("Invalid OTP. Please try again.");
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Failed to send OTP. Please try again later.");
+                    sendOtpButton.disabled = false;
+                    sendOtpButton.textContent = 'Send OTP';
+                });
+        }
+    </script>
+</body>
+</html>
