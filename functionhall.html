@@ -1,84 +1,136 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Function Hall Booking</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f0f8ff;
+            padding: 30px 10px;
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-        }           
-        
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+
         .hall-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
-        
+
         .hall-card {
-            border: 2px solid black;
+            border: 1px solid #ccc;
             border-radius: 10px;
-            padding: 15px;
-            text-align: center;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            background-color: #fafafa;
         }
-        
+
+        .hall-card:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
+        }
+
         .hall-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 10px;
         }
-        
+
+        .hall-card h3 {
+            margin: 15px 0 10px;
+            color: #333;
+        }
+
+        .hall-card p {
+            font-size: 14px;
+            color: #666;
+            padding: 0 10px;
+        }
+
+        .price {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #2196F3;
+            margin: 10px 0;
+        }
+
         .booking-form {
             background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px #eee;
         }
-        
+
         .form-group {
             margin-bottom: 15px;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            color: #333;
         }
-        
-        .form-group input, .form-group select {
+
+        .form-group input,
+        .form-group select {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
         }
-        
+
         button {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
         }
-        
+
         button:hover {
-            background-color: #45a049;
+            background-color: #388e3c;
         }
-        
-        .price {
-            font-size: 1.2em;
-            color: #2196F3;
-            margin: 10px 0;
+
+        button[type="button"] {
+            background-color: #1976d2;
+            margin-left: 10px;
+        }
+
+        button[type="button"]:hover {
+            background-color: #0d47a1;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Function Hall Booking</h1>
-        
+
         <div class="hall-grid">
             <div class="hall-card">
                 <img src="banquet-hall.avif" alt="Banquet Hall">
@@ -86,70 +138,65 @@
                 <p>Elegant hall for weddings and large gatherings (capacity: 300)</p>
                 <div class="price">₹25,000/day</div>
             </div>
-            
-          
-        
+        </div>
+
         <div class="booking-form">
             <h2>Book Your Function Hall</h2>
-            <form action="store2.jsp" method="post">
+            <form action="./store3.jsp" method="post">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
                     <input type="tel" id="phone" name="phone" required>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="hall-type">Hall Type</label>
-                    <select id="hall-type" name="hallType" required>
+                    <label for="halltype">Hall Type</label>
+                    <select id="halltype" name="halltype" required>
                         <option value="">Select Hall Type</option>
                         <option value="banquet">Banquet Hall - ₹25,000/day</option>
-                        
                     </select>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="event-type">Event Type</label>
-                    <select id="event-type" name="eventType" required>
+                    <label for="eventtype">Event Type</label>
+                    <select id="eventtype" name="eventtype" required>
                         <option value="">Select Event Type</option>
                         <option value="wedding">Wedding</option>
-                      
                         <option value="birthday">Birthday Party</option>
                         <option value="corporate">Corporate Event</option>
                         <option value="other">Other</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="event-date">Event Date</label>
-                    <input type="date" id="event-date" name="eventDate" required>
+                    <label for="eventdate">Event Date</label>
+                    <input type="date" id="eventdate" name="eventdate" required>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="time-slot">Time Slot</label>
-                    <select id="time-slot" name="timeSlot" required>
+                    <label for="timeslot">Time Slot</label>
+                    <select id="timeslot" name="timeslot" required>
                         <option value="">Select Time Slot</option>
                         <option value="morning">Morning (8:00 AM - 2:00 PM)</option>
                         <option value="evening">Evening (3:00 PM - 9:00 PM)</option>
                         <option value="fullday">Full Day (8:00 AM - 9:00 PM)</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="guests">Expected Number of Guests</label>
                     <input type="number" id="guests" name="guests" min="1" max="300" required>
                 </div>
-               
-                </div>
-                
+
                 <button type="submit">Book Now</button>
                 <button type="button" onclick="location.href='bookingpage.html'">Back to Booking Page</button>
             </form>
@@ -157,14 +204,14 @@
     </div>
 
     <script>
-       
+        // Set minimum date to tomorrow
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         const minDate = tomorrow.toISOString().split('T')[0];
-        document.getElementById('event-date').min = minDate;
-        
-    
-        document.getElementById('hall-type').addEventListener('change', function() {
+        document.getElementById('eventdate').min = minDate;
+
+        // Adjust guest limit based on hall type
+        document.getElementById('halltype').addEventListener('change', function () {
             const maxGuests = this.value === 'banquet' ? 300 : 100;
             const guestsInput = document.getElementById('guests');
             guestsInput.max = maxGuests;
@@ -172,4 +219,4 @@
         });
     </script>
 </body>
-</html> 
+</html>

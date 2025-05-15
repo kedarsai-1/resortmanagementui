@@ -1,74 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resort Management System</title>
     <style>
-        div{
-            text-align: right;
-            text-decoration: dashed;
-        }
-        *{
+        * {
             background-color: azure;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-      
-    
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            border: 1px solid white;
+            width: 100%;
+            height: 80px;
+            background-color: orange;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        header button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: white;
+            border: 1px solid gray;
+            cursor: pointer;
+        }
+
+        .about-us {
+            border: 1px solid white;
+            width: 10%;
+            height: 600px;
+            float: left;
+            background-color: aqua;
+            padding: 10px;
+        }
+
+        .about-us h3 {
+            font-family: 'Courier New', Courier, monospace;
+            font-style: italic;
+        }
+
+        .main-content {
+            border: 1px solid black;
+            width: 79%;
+            height: 600px;
+            float: left;
+            background-color: orangered;
+            animation: rotate 3s ease-in 1;
+        }
+
+        .main-content img {
+            animation: move 5s ease-in-out infinite;
+            width: 99%;
+            height: 600px;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: scale(5);
+                border-radius: 60%;
+            }
+            100% {
+                transform: rotate(360deg);
+                border-radius: 60%;
+            }
+        }
+
+        footer {
+            border: 1px solid white;
+            width: 100%;
+            height: 100px;
+            clear: both;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
-    <body>
-        
-    
-            <div style="border:1px solid white; width: 100%; height:80px; background-color: orange;">
-                <center>
-                    <h1> RESORT MANAGEMENT SYSTEM</h1>
-                </center>
-        <button  onclick="location.href='signin.html'"  >Sign in</button>
-        <button  onclick="location.href='signup.html'" >Sign up</button>
-            </div>
-   
-            <div class ="about us" style="border:1px solid white; width:10%; height:600px; float:left; background-color: aqua;">
-                
-                <h3 style="font-family: 'Courier New', Courier, monospace;font-style: italic;">
-                    ABOUT US
-                </h3>
-            </div>
-            <div class="hi" style="border:1px solid black; width:79%; height:600px; float:left; ">
-                <img style="animation: move 5s ease-in-out infinite;" src="hi.webp" alt="hi" width="99%" height="600px" >
-            </div>
-        <style>
-            .hi{
-                background-color: orangered;
-                animation-name: rotate;
-                animation-iteration-count: 1;
-                animation-timing-function:ease-in;
-                animation-duration: 3s;
-               
+</head>
+<body>
 
-            }
-            @keyframes rotate {
-                0%{
-                    transform: scale(5);
-                    border-radius: 60%;
-                }
-                
-                100%{
-                    transform: rotate(360deg);
-                    border-radius: 60%;
-                }
-                
-            }
-            </style>
-            
-            <div style = " border: 1px solid white; width:100%; height:100px; float:left;" >
-            <center>
-            <h6>copy right </h6>
-        </center>
-
+    <header>
+        <h1>RESORT MANAGEMENT SYSTEM</h1>
+        <div>
+            <button onclick="location.href='signin.html'">Sign in</button>
+            <button onclick="location.href='signup.html'">Sign up</button>
         </div>
-        
-        
+    </header>
 
-        
-        
-    
-   
-       
-    </body>
+    <div class="about-us">
+        <h3>ABOUT US</h3>
+    </div>
+
+    <div class="main-content">
+        <img src="index.jpg" alt="hi">
+    </div>
+
+    <footer>
+        <h6>&copy; Copyright</h6>
+    </footer>
+
+</body>
 </html>

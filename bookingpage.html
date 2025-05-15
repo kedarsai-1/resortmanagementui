@@ -1,39 +1,76 @@
-<html>
-    <head>
-          <style>
-        .room {
-            display: flex;
-            justify-content: center; 
-            align-items: center;    
-           float: left;
-          }
-          .table{
-            display: flex;
-            justify-content: center; 
-            align-items: center;    
-            float: left;
-          }
-          </style>
-          
-          
-          
-           
-       
-        <title>Booking page</title>
-    </head>
-    <body>
-        <h1 style="text-align: center;">WELCOME </h1>
-        
-        <div class="room" > 
-            <a href="room.html" target="_blank"><img src="room.jpeg" alt="rooms" width="500px" height="600px"></a>
-        </div>
-        <div class="table">
-            <a href="table.html" target="_blank"><img src="Table.jpeg" alt="tables" width="500px" height="600px" ></a>
-        </div>
-        <div class="hall">
-            <a href="functionhall.html" target="_blank"><img src="functionhall.avif" alt="halls" width="400px" height="600px" ></a>
-        </div>
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    </body>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 40px 0;
+            color: #333;
+        }
+
+        .booking-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .booking-item {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .booking-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .booking-item img {
+            width: 400px;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>WELCOME</h1>
+
+    <div class="booking-container">
+        <div class="booking-item">
+            <a href="room.html" target="_blank">
+                <img src="room.jpg" alt="Rooms">
+            </a>
+        </div>
+        <div class="booking-item">
+            <a href="table.html" target="_blank">
+                <img src="Table.jpg" alt="Tables">
+            </a>
+        </div>
+        <div class="booking-item">
+            <a href="functionhall.html" target="_blank">
+                <img src="functionhall.jpg" alt="Halls">
+            </a>
+        </div>
+    </div>
+
+</body>
 </html>
